@@ -32,7 +32,8 @@ class QueryUtils {
                     val mag = property.getDouble("mag")
                     val place = property.getString("place")
                     val date = property.getLong("time")
-                    val earthquake = Earthquake(mag, place, date)
+                    val url = property.getString("url")
+                    val earthquake = Earthquake(mag, place, date, url)
                     earthquakes.add(earthquake)
                 }
             } catch (e: JSONException) {
