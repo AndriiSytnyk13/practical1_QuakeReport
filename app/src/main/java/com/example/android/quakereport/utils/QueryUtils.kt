@@ -31,7 +31,7 @@ class QueryUtils {
                     val property = currentEarthquake.getJSONObject("properties")
                     val mag = property.getDouble("mag")
                     val place = property.getString("place")
-                    val date = property.getInt("time")
+                    val date = property.getLong("time")
                     val earthquake = Earthquake(mag, place, date)
                     earthquakes.add(earthquake)
                 }
@@ -41,4 +41,5 @@ class QueryUtils {
             return earthquakes
         }
     }
+
 }
