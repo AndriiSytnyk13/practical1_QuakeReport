@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Andrij/AndroidStudioProjects/QuakeReport/app/src/main/res/drawable/mag_draw.xml" value="0.1465" />
         <entry key="..\:/Users/Andrij/AndroidStudioProjects/QuakeReport/app/src/main/res/layout/earthquake_activity.xml" value="0.1" />
         <entry key="..\:/Users/Andrij/AndroidStudioProjects/QuakeReport/app/src/main/res/layout/item_earthquake.xml" value="0.264" />
       </map>
