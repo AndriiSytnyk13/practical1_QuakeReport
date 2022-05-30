@@ -7,14 +7,12 @@ import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.android.quakereport.databinding.EarthquakeActivityBinding
-import com.example.android.quakereport.model.Earthquake
-import com.example.android.quakereport.utils.QueryUtils
 import com.example.android.quakereport.utils.QueryUtils.Companion.REQUEST
 import com.example.android.quakereport.utils.QueryUtils.Companion.fetchData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class EarthquakeActivity : AppCompatActivity() {
@@ -25,12 +23,13 @@ class EarthquakeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         earthquakeActivityBinding = EarthquakeActivityBinding.inflate(layoutInflater)
         setContentView(earthquakeActivityBinding.root)
-        val arrayList = ArrayList<Earthquake>()
-        val arrayAdapter = EarthquakeAdapter(this, arrayList)
-        earthquakeActivityBinding.list.adapter = arrayAdapter
-        openItemUrl(arrayAdapter)
-        CoroutineScope(Dispatchers.IO).launch {
+        val list = CoroutineScope(Dispatchers.IO).async {
             fetchData(REQUEST)
+        }
+        lifecycleScope.launch {
+            val arrayAdapter = EarthquakeAdapter(this@EarthquakeActivity, list.await())
+            earthquakeActivityBinding.list.adapter = arrayAdapter
+            openItemUrl(arrayAdapter)
         }
     }
 

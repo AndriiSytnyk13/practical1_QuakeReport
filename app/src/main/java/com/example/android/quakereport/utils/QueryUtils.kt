@@ -45,7 +45,7 @@ class QueryUtils {
 
         }
 
-        fun fetchData(urlRequest: String): List<Earthquake> {
+        fun fetchData(urlRequest: String): ArrayList<Earthquake> {
             val url = createUrl(urlRequest)
             var jsonResponse: String? = null
             try {
