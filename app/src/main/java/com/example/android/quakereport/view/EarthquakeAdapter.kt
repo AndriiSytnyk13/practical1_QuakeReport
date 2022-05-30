@@ -13,8 +13,7 @@ import com.example.android.quakereport.R
 import com.example.android.quakereport.databinding.ItemEarthquakeBinding
 import com.example.android.quakereport.model.Earthquake
 import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Date
 
 class EarthquakeAdapter(context: Activity, earthquake: ArrayList<Earthquake>) :
     ArrayAdapter<Earthquake>(context, 0, earthquake) {
